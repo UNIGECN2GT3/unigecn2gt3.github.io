@@ -1,0 +1,14 @@
+<div class="d-flex flex-column justify-content-center align-items-center p-4">
+  <ng-container *ngIf="!this.quizSelected; else elseTemplate">
+    <h2>Quizzes</h2>
+    <div class="d-flex flex-row flex-wrap w-100 justify-content-center">
+      <div (click)="selectQuiz(v)" *ngFor="let v of this.numberOfQuizzes | toArr" class="col-resp card m-2 p-4">
+        <h4 class="text-center">Quiz {{ v + 1 }}</h4>
+        <p class="text-center my-4 p-0">{{ quiz[lang][v + 1].length }} questions</p>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <app-quiz-body [quiz]="this.selectedQuestionSet"></app-quiz-body>
+  </ng-template>
+</div>

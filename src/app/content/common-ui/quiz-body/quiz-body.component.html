@@ -1,0 +1,37 @@
+<div class="quiz-container">
+  <ng-container *ngIf="this.currentQuestion != this.numberOfQuestions + 1; else elseTemplate">
+    <h3 class="text-center">Question {{ this.currentQuestion }} / {{ this.numberOfQuestions }}</h3>
+
+    <p class="px-1 py-0 text-justify"><strong>{{ this.quiz[currentQuestion-1].question }}</strong></p>
+
+    <div class="d-flex flex-column" id="responses">
+      <div class="card py-2 px-3 my-1 text-justify" *ngFor="let q of this.quiz[currentQuestion - 1].responses | keyvalue" (click)="onClick($event, q.key)" id="response-{{q.key}}">
+        {{q.key}} - {{ q.value }}
+      </div>
+    </div>
+    <div class="d-flex flex-column">
+      <ng-container *ngIf="!this.reasonShown; else elseTemplate">
+        <div class="btn btn-primary mx-auto mt-3" (click)="onVerify()">Vérification</div>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <div class="mt-3"><u>Explication:</u></div>
+        <div class="text-justify">{{ this.quiz[currentQuestion - 1].reason }}</div>
+        <ng-container *ngIf="currentQuestion < numberOfQuestions; else elseTemplate">
+          <div class="btn btn-primary mt-3" (click)="this.onNextQuestion()">Prochaine Question</div>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <div class="btn btn-primary mt-3" (click)="this.onNextQuestion()">Voir résultats</div>
+        </ng-template>
+      </ng-template>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    
+    <div class="d-flex flex-column justify-content-center">
+      <h3 class="text-center">Résultats</h3>
+      <p class="text-center px-0">Votre score est de:</p>
+      <span class="text-center large">{{ Math.round(this.correctAnswers / this.numberOfQuestions * 100) }}%</span>
+      <div class="mt-4 btn btn-primary text-center" (click)="reload()">Recommencer</div>
+    </div>
+  </ng-template>
+</div>

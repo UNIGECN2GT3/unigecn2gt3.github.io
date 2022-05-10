@@ -1,0 +1,17 @@
+.card {
+  border-radius: 25px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.col-resp {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+@media screen and (max-width: 768px) {
+  .col-resp {
+    flex: 0 0 49%;
+    max-width: 49%;
+  }
+}

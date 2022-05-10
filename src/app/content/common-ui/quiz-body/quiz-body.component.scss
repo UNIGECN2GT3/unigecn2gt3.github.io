@@ -1,0 +1,22 @@
+.card {
+  border-radius: 10px;
+}
+
+.selected {
+  background-color:  #fff;
+}
+
+.card {
+  user-select: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+  .quiz-container {
+    max-width: 600px;
+  }
+}
+
+.large {
+  font-size: xx-large;
+}

@@ -1,0 +1,3 @@
+User-agent: *
+Crawl-delay: 120
+Sitemap: https://unigecn2gt3.github.io/sitemap.xml
